@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 220 10% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 10% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 210 100% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 10% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 10% 8%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 190 90% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 10% 12%;
+    --input: 220 10% 12%;
+    --ring: 210 100% 56%;
+    --radius: 0.375rem;
+
+    --chart-1: 210 100% 56%;
+    --chart-2: 190 90% 50%;
+    --chart-3: 142 70% 45%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 0 72% 51%;
+
+    --lg-blue: #2b8eff;
+    --lg-cyan: #00d4ff;
+    --lg-graphite: #0a0d12;
+    --lg-surface: #0d1117;
+    --lg-surface-2: #11161e;
+    --lg-border: #1a2029;
+    --lg-text: #e8edf3;
+    --lg-text-muted: #6b7785;
+    --lg-text-dim: #4a5360;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+}
+
+@layer utilities {
+  .font-mono-tech {
+    font-family: var(--font-mono), 'JetBrains Mono', monospace;
+  }
+  .font-sans {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  .text-lg-blue {
+    color: var(--lg-blue);
+  }
+  .text-lg-cyan {
+    color: var(--lg-cyan);
+  }
+  .text-lg-muted {
+    color: var(--lg-text-muted);
+  }
+  .text-lg-dim {
+    color: var(--lg-text-dim);
+  }
+  .bg-lg-surface {
+    background-color: var(--lg-surface);
+  }
+  .bg-lg-surface-2 {
+    background-color: var(--lg-surface-2);
+  }
+  .border-lg {
+    border-color: var(--lg-border);
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--lg-border) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #1a2029;
+    border-radius: 3px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: #2a3340;
+  }
+}
+
+/* Keyframes for splash animation */
+@keyframes lg-particle-float {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes lg-scan-ring {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes lg-sweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes lg-pulse-soft {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes lg-grid-expand {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lg-data-flow {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes lg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lg-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lg-line-draw {
+  from {
+    stroke-dashoffset: var(--dash-length, 200);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-lg-pulse-soft {
+  animation: lg-pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-lg-fade-in {
+  animation: lg-fade-in 0.8s ease-out forwards;
+}
+
+.animate-lg-slide-up {
+  animation: lg-slide-up 0.6s ease-out forwards;
+}
+
+/* Grid background */
+.lg-grid-bg {
+  background-image:
+    linear-gradient(rgba(43, 142, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(43, 142, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.lg-grid-bg-fine {
+  background-image:
+    linear-gradient(rgba(43, 142, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(43, 142, 255, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Radial mask for grid fade */
+.lg-radial-mask {
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+/* Glass surface */
+.lg-glass {
+  background: rgba(13, 17, 23, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Selection */
+::selection {
+  background: rgba(43, 142, 255, 0.25);
+  color: #fff;
+}
